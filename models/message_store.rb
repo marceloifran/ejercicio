@@ -7,15 +7,9 @@ class MessageStore
     @instance ||= new
   end
 
-  def save(phone, message, response)
-    entry = {
-      phone: phone,
-      message: message,
-      response: response,
-      timestamp: Time.now
-    }
-    @messages << entry
-    entry
+  def save(message_obj)
+    @messages << message_obj
+    message_obj
   end
 
   def all

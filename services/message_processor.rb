@@ -1,4 +1,5 @@
 require_relative '../models/message_store'
+require_relative '../models/message'
 
 class MessageProcessor
   def initialize(params)
@@ -11,7 +12,8 @@ class MessageProcessor
     return { error: 'Invalid request', status: 400 } if invalid_params?
 
     response_text = generate_response
-    @store.save(@phone, @message, response_text)
+    message_obj = Message.new(phone: @phone, content: @message, response: response_text)
+    @store.save(message_obj)
 
     { response: response_text, status: 200 }
   end

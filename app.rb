@@ -4,6 +4,8 @@ require 'logger'
 require_relative 'services/message_processor'
 
 class WebhookApp < Sinatra::Base
+  helpers Sinatra::JSON
+
   configure do
     set :logger, Logger.new(STDOUT)
     set :show_exceptions, false
