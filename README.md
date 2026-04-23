@@ -123,6 +123,7 @@ bundle exec rspec
 ## 💡 Decisiones Técnicas
 
 1. **Sinatra vs Rails:** Se eligió Sinatra por su ligereza, ideal para microservicios y pruebas técnicas donde no se requiere el overhead de un framework completo como Rails.
-2. **MessageProcessor:** Se separó la lógica de negocio de la capa de transporte (HTTP) para facilitar los tests unitarios y el mantenimiento.
-3. **MessageStore (Singleton):** Para cumplir con el requisito de persistencia en memoria, se utilizó el patrón Singleton asegurando que todos los hilos del servidor accedan al mismo estado.
-4. **Validaciones:** Se implementó una verificación estricta de la presencia de campos obligatorios (`phone` y `message`) devolviendo los códigos de estado HTTP correspondientes.
+2. **Arquitectura de Modelos:** Se introdujo una clase `Message` para representar la entidad de datos, promoviendo un código más tipado y estructurado en lugar de manejar hashes planos.
+3. **MessageProcessor (Service Pattern):** Se separó la lógica de negocio de la capa de transporte (HTTP) siguiendo el patrón de servicio, lo que facilita los tests unitarios y la escalabilidad.
+4. **MessageStore (Singleton):** Para cumplir con el requisito de persistencia en memoria, se utilizó el patrón Singleton asegurando un único punto de verdad durante la ejecución.
+5. **Validaciones y Seguridad:** Se implementó una verificación estricta de campos obligatorios y manejo de errores JSON. Además, se incluyeron archivos de configuración `.gitignore` y `.dockerignore` para seguir estándares profesionales de desarrollo.
