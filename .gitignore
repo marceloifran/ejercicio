@@ -1,0 +1,9 @@
+.bundle/
+vendor/bundle
+/tmp/
+/log/
+*.log
+.DS_Store
+.env
+spec/examples.txt
+coverage/
